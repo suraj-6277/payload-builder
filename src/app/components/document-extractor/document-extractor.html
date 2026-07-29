@@ -1,0 +1,52 @@
+<div class="extractor">
+
+<h2>Upload source report</h2>
+
+<p class="hint">
+Upload a Word doc, PDF, or screenshot of a client report. We'll find the
+values that change per report and turn them into template variables.
+</p>
+
+<div class="dropzone" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
+
+@if (!selectedFile()) {
+
+<label class="dropzone-label">
+<input type="file" accept=".docx,.pdf,.png,.jpg,.jpeg" (change)="onFileSelected($event)" hidden>
+<span>Drag a file here, or click to browse</span>
+<span class="filetypes">.docx &middot; .pdf &middot; .png &middot; .jpg</span>
+</label>
+
+} @else {
+
+<div class="fileRow">
+<span>{{ selectedFile()!.name }}</span>
+<button type="button" (click)="reset()">Remove</button>
+</div>
+
+}
+
+</div>
+
+@if (error()) {
+<p class="error">{{ error() }}</p>
+}
+
+<button type="button" class="extractBtn" [disabled]="!selectedFile() || loading()" (click)="extract()">
+{{ loading() ? 'Extracting…' : 'Extract variables' }}
+</button>
+
+@if (fields().length) {
+  <div class="resultPanel">
+    <div class="resultHeader">
+      <span class="badge">{{ fields().length }} variables found</span>
+    </div>
+    <pre>{{ fields() | json }}</pre>
+    <div class="actions">
+      <button type="button" (click)="copyJson()">{{ copied() ? 'Copied' : 'Copy' }}</button>
+      <button type="button" (click)="downloadJson()">Download</button>
+    </div>
+  </div>
+}
+
+</div>
