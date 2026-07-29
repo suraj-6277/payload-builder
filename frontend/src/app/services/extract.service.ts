@@ -17,7 +17,7 @@ export interface ExtractResponse {
   providedIn: 'root'
 })
 export class ExtractService {
-  private apiUrl = 'http://localhost:5000/api/extract';
+  private apiUrl = '/extract';
 
   constructor(private http: HttpClient) {}
 
