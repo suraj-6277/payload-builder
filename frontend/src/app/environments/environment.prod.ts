@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://your-render-url.onrender.com/api'
+  apiUrl: 'https://payload-builder-api.onrender.com/api/templates'
 };

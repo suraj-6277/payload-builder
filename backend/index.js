@@ -5,7 +5,13 @@ require("dotenv").config();
 const templateRoutes = require("./routes/templates");
 const extractRoutes = require("./routes/extract");
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: [
+    "http://localhost:4200",
+    "https://payload-builder-5bna.vercel.app/"
+  ]
+}));
 app.use(express.json());
 app.use("/api/templates", templateRoutes);
 app.use("/api/extract", extractRoutes);
