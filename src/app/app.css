@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2.5rem 0 4rem;
+}
+
+h1 {
+  margin: 0 0 1.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
