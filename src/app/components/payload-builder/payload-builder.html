@@ -1,0 +1,24 @@
+<div class="container">
+
+<h2>Add variable</h2>
+
+<div class="form-row">
+  <input
+    [ngModel]="draft().description"
+    (ngModelChange)="update('description', $event)"
+    placeholder="Description">
+
+  <input
+    [ngModel]="draft().variableTemplate"
+    (ngModelChange)="update('variableTemplate', $event)"
+    placeholder="Variable Template">
+
+  <input
+    [ngModel]="draft().variableValue"
+    (ngModelChange)="update('variableValue', $event)"
+    placeholder="Variable Value">
+</div>
+
+<button type="button" class="add-btn" (click)="addSection()">+ Add Section</button>
+
+</div>
