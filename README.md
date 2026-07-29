@@ -1,59 +1,116 @@
 # PayloadBuilder
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.19.
+PayloadBuilder is an Angular-based frontend paired with a lightweight Node/Express API (in `payload-builder-api/`) for extracting and building payloads from documents.
 
-## Development server
+## Table of contents
+- Project overview
+- Prerequisites
+- Installation
+- Running (frontend & backend)
+- Environment & secrets
+- Building and testing
+- Contribution & commit guidance
+- Pushing to GitHub (recommended flow)
 
-To start a local development server, run:
+## Prerequisites
+- Node.js (v18+ recommended)
+- npm (or yarn)
+- Angular CLI (optional for global `ng` usage)
+
+## Installation
+1. Clone the repository locally (or initialize if you already have it):
 
 ```bash
+git clone <your-repo-url> payload-builder
+cd payload-builder
+```
+
+2. Install root/frontend dependencies:
+
+```bash
+npm install
+```
+
+3. Install backend dependencies:
+
+```bash
+cd payload-builder-api
+npm install
+cd ..
+```
+
+## Running the project locally
+
+- Frontend (Angular dev server):
+
+```bash
+npm run start
+# or
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Backend API (in a separate terminal):
 
 ```bash
-ng generate component component-name
+cd payload-builder-api
+node index.js
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+After both are running, open `http://localhost:4200/` to view the app.
 
-```bash
-ng generate --help
-```
+## Environment & secrets
+- Do NOT commit environment files or secrets. This repository includes `.gitignore` entries for `.env` and related files.
+- Keep any credentials, API keys, or secret configuration in a local `.env` file (for example: `payload-builder-api/.env`) and never push them to GitHub.
 
 ## Building
 
-To build the project run:
-
 ```bash
-ng build
+npm run build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Build artifacts are placed into the `dist/` folder.
 
-## Running unit tests
+## Tests
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Run unit tests:
 
 ```bash
-ng e2e
+npm test
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Contribution & commit guidance
+- Keep commits small and focused (one logical change per commit).
+- Use clear commit messages, e.g., `chore: add .gitignore`, `docs: improve README`, `feat(api): add template extractor`.
+- Prefer feature branches: `git checkout -b feat/add-extractor` and open a pull request.
 
-## Additional Resources
+Suggested commit split before first push:
+1. `chore: add .gitignore` (add patterns to avoid committing secrets and build artifacts)
+2. `docs: improve README` (this file)
+3. `chore: add contributing guidelines` (optional)
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Pushing to GitHub (recommended flow)
+
+1. Create a repository on GitHub under your account (`suraj-6277`).
+2. Add the remote and push your branches. Example commands:
+
+```bash
+# from repo root
+git init                      # if the repo is not already a git repo
+git add .
+git commit -m "chore: add .gitignore"
+git commit -m "docs: improve README" --allow-empty -m "Update README with setup and push instructions" # adjust as needed
+# create and push main branch
+git branch -M main
+git remote add origin git@github.com:suraj-6277/<repo-name>.git
+git push -u origin main
+```
+
+Notes:
+- If you need to split changes into multiple commits, stage files selectively with `git add <path>` and commit frequently.
+- Review `git status` and `git diff` before committing.
+
+## Next steps I can take for you
+- Create or update `.gitignore` to ensure env files are ignored. (done)
+- Improve `README.md` with setup and push instructions. (done)
+- Create `CONTRIBUTING.md` and a sample PR checklist (optional).
+- If you want, I can run a sequence of `git` commands here to create granular commits and push — but you'll need to confirm remote repo creation and provide permission to run git commands.  
