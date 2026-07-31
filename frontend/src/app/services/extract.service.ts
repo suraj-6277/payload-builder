@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 export interface ExtractedField {
   description: string;
@@ -17,7 +18,7 @@ export interface ExtractResponse {
   providedIn: 'root'
 })
 export class ExtractService {
-  private apiUrl = '/extract';
+  private apiUrl = `${environment.apiBaseUrl}/extract`;
 
   constructor(private http: HttpClient) {}
 
